@@ -12,7 +12,7 @@ fi
 
 cd ~/dotfiles
 
-for link in .gitconfig .gitignore .zprofile .zshrc do
+for link in .gitconfig .gitignore .zprofile .zshrc; do
   if [ -L "$HOME/$link" ]; then
     echo "Link '$link' exists"
   else
@@ -42,9 +42,7 @@ brew install --cask \
   dropbox \
   firefox \
   google-chrome \
-  gpg-suite \
   harvest \
-  httpd \
   macdown \
   microsoft-teams \
   moom \
