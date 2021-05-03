@@ -1,0 +1,22 @@
+[user]
+	email = mthompson@heysparkbox.com
+	name = Melissa Thompson
+	signingkey = B3ED2872
+[commit]
+	gpgsign = true
+[core]
+	excludesfile = /Users/melissa/.gitignore_global
+[credential]
+	helper = osxkeychain
+[secrets]
+	providers = /Users/melissa/Workspace/secrets/provider.js
+[pager]
+	branch = false
+[pull]
+  rebase = true
+[fetch]
+	# Delete local references to remote branches that have been deleted
+	prune = true
+[init]
+	# Git defaults to `master`, let's use `main`
+	defaultBranch = main
