@@ -5,52 +5,41 @@ echo "✨ Starting setup"
 echo "Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-PACKAGES=(
-  git
-  git-secrets
-  jq
-  nvm
-  vim
-  zsh
-)
-
 echo "Installing packages..."
-brew install ${PACKAGES[@]}
+brew install \
+  git \
+  git-secrets \
+  jq \
+  nvm \
+  vim \
+  zsh
 
 echo "Installing Heroku CLI..."
 brew tap heroku/brew && brew install heroku
 
-echo "Installing cask..."
-
-CASKS=(
-  1password
-  alfred
-  bartender
-  caffeine
-  docker
-  dropbox
-  firefox
-  google-chrome
-  gpg-suite
-  harvest
-  httpd
-  macdown
-  microsoft-teams
-  moom
-  recordit
-  skitch
-  slack
-  spotify
-  tableplus
-  visual-studio-code
-  zoom
-)
-
 echo "Installing cask apps..."
-brew install --cask ${CASKS[@]}
-
-echo "Setting up oh-my-zsh..."
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+brew install --cask \
+  1password \
+  alfred \
+  bartender \
+  caffeine \
+  docker \
+  dropbox \
+  firefox \
+  google-chrome \
+  gpg-suite \
+  harvest \
+  httpd \
+  macdown \
+  microsoft-teams \
+  moom \
+  recordit \
+  skitch \
+  slack \
+  spotify \
+  tableplus \
+  visual-studio-code \
+  zoom
 
 echo "Setting up NVM..."
 NODE_VERSION=14 PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh)"
@@ -111,17 +100,15 @@ fi
 
 cd ~/dotfiles
 
-LINKS=(
-  .gitconfig
-  .gitignore
-  .zshrc
-)
-for link in ${LINKS[@]}; do
+for link in .gitconfig .gitignore .zprofile .zshrc do
   if [ -L "$HOME/$link" ]; then
     echo "Link '$link' exists"
   else
     ln -s "$PWD/$link" "$HOME/$link"
   fi
 done
+
+echo "Setting up oh-my-zsh..."
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "Setup complete ✨"
