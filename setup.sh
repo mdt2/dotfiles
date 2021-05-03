@@ -26,16 +26,22 @@ CASKS=(
   1password
   alfred
   bartender
+  caffeine
   docker
+  dropbox
   firefox
   google-chrome
+  gpg-suite
+  harvest
   httpd
+  macdown
   microsoft-teams
   moom
   recordit
   skitch
   slack
   spotify
+  tableplus
   visual-studio-code
   zoom
 )
