@@ -5,6 +5,21 @@ echo "✨ Starting setup"
 echo "Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+echo "Setting up dotfiles..."
+if [ ! -d ~/dotfiles ]; then
+  git clone https://github.com/mdt2/dotfiles.git ~/dotfiles
+fi
+
+cd ~/dotfiles
+
+for link in .gitconfig .gitignore .zprofile .zshrc do
+  if [ -L "$HOME/$link" ]; then
+    echo "Link '$link' exists"
+  else
+    ln -s "$PWD/$link" "$HOME/$link"
+  fi
+done
+
 echo "Installing packages..."
 brew install \
   git \
@@ -91,22 +106,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
-fancy_echo "You'll need to restart your computer before all iOS settings can take effect."
-
-echo "Setting up dotfiles..."
-if [ ! -d ~/dotfiles ]; then
-  git clone https://github.com/mdt2/dotfiles.git ~/dotfiles
-fi
-
-cd ~/dotfiles
-
-for link in .gitconfig .gitignore .zprofile .zshrc do
-  if [ -L "$HOME/$link" ]; then
-    echo "Link '$link' exists"
-  else
-    ln -s "$PWD/$link" "$HOME/$link"
-  fi
-done
+echo "You'll need to restart your computer before all handy development options can take effect."
 
 echo "Setting up oh-my-zsh..."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
