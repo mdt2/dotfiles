@@ -21,38 +21,36 @@ for link in .gitconfig .gitignore .zprofile .zshrc; do
 done
 
 echo "Installing packages..."
-brew install \
-  git \
-  git-secrets \
-  jq \
-  nvm \
-  vim \
-  zsh
+brew install git
+brew install git
+brew install git-secrets
+brew install jq
+brew install nvm
+brew install vim
+brew install zsh
 
 echo "Installing Heroku CLI..."
 brew tap heroku/brew && brew install heroku
 
 echo "Installing cask apps..."
-brew install --cask \
-  1password \
-  alfred \
-  bartender \
-  caffeine \
-  docker \
-  dropbox \
-  firefox \
-  google-chrome \
-  harvest \
-  macdown \
-  microsoft-teams \
-  moom \
-  recordit \
-  skitch \
-  slack \
-  spotify \
-  tableplus \
-  visual-studio-code \
-  zoom
+brew install --cask 1password
+brew install --cask alfred
+brew install --cask bartender
+brew install --cask caffeine
+brew install --cask docker
+brew install --cask dropbox
+brew install --cask firefox
+brew install --cask google-chrome
+brew install --cask macdown
+brew install --cask microsoft-teams
+brew install --cask moom
+brew install --cask recordit
+brew install --cask skitch
+brew install --cask slack
+brew install --cask spotify
+brew install --cask tableplus
+brew install --cask visual-studio-code
+brew install --cask zoom
 
 echo "Setting up NVM..."
 NODE_VERSION=14 PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh)"
