@@ -5,6 +5,7 @@ echo "✨ Starting setup"
 echo "Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# TODO: does this linking work?
 echo "Setting up dotfiles..."
 if [ ! -d ~/dotfiles ]; then
   git clone https://github.com/mdt2/dotfiles.git ~/dotfiles
@@ -32,6 +33,8 @@ brew install zsh
 echo "Installing Heroku CLI..."
 brew tap heroku/brew && brew install heroku
 
+# TODO: does this syntax allow the script to keep running even if
+# one of the installs fails or isn't available?
 echo "Installing cask apps..."
 brew install --cask 1password
 brew install --cask alfred
@@ -52,15 +55,7 @@ brew install --cask tableplus
 brew install --cask visual-studio-code
 brew install --cask zoom
 
-echo "Setting up NVM..."
-NODE_VERSION=14 PROFILE=/dev/null sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh)"
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # loads nvm
-
-echo "Installing rvm with auto-dotfiles support..."
-curl -sSL https://get.rvm.io | bash -s stable --auto-dotfiles
-
-# Development-friendly iOS settings.
+# Development-friendly iOS settings from Sparkbox's laptop script.
 # Hand-picked from https://mths.be/osx
 
 echo "Setting handy development options..."
